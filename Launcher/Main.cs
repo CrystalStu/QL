@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Threading;
@@ -15,7 +8,7 @@ namespace Launcher
 {
     public partial class Launcher : Form
     {
-        string ExitPass = "ExitSystem";
+        // string ExitPass = "ExitSystem";
 
         public const int WM_DEVICECHANGE = 0x219;
         public const int DBT_DEVICEARRIVAL = 0x8000;    //如果m.Msg的值为0x8000那么表示有U盘插入
@@ -34,13 +27,13 @@ namespace Launcher
         public Launcher()
         {
             InitializeComponent();
+            bt_copyright.Location = new System.Drawing.Point(Screen.PrimaryScreen.WorkingArea.Width - 115, Screen.PrimaryScreen.WorkingArea.Height-64);
         }
 
         private void Launcher_Load(object sender, EventArgs e)
         {
-            TopMost = true;
+            ProgramUpd.Execute();
             List_USB();
-            TopMost = false;
         }
 
         public Message mm;
@@ -239,20 +232,23 @@ namespace Launcher
 
         private void bt_exit_Click(object sender, EventArgs e)
         {
-
+            /*
             tb_exit_pass.Text = string.Empty;
             tb_exit_pass.Visible = true;
             bt_exit_verify.Visible = true;
+            */
         }
 
         private void bt_exit_verify_Click(object sender, EventArgs e)
         {
+            /*
             if (tb_exit_pass.Text == ExitPass + (DateTime.Now.Month * 3).ToString() + (DateTime.Now.Day * 2).ToString() + DateTime.Now.Year.ToString() + DateTime.Now.Hour.ToString()) System.Environment.Exit(0);
             else
             {
                 tb_exit_pass.Visible = false;
                 bt_exit_verify.Visible = false;
             }
+            */
         }
 
         private void bt_usb_clear_Click(object sender, EventArgs e)
@@ -297,7 +293,7 @@ namespace Launcher
 
         private void lb_title_DoubleClick(object sender, EventArgs e)
         {
-            if (File.Exists(Application.StartupPath + "\\CanExit")) System.Environment.Exit(0);
+            if (File.Exists(Application.StartupPath + "\\meta\\CanExit")) System.Environment.Exit(0);
         }
 
         private void bt_copyright_Click(object sender, EventArgs e)
