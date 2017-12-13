@@ -45,7 +45,9 @@
             // lb_title
             // 
             this.lb_title.AutoSize = true;
+            this.lb_title.BackColor = System.Drawing.Color.Transparent;
             this.lb_title.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lb_title.ForeColor = System.Drawing.Color.White;
             this.lb_title.Location = new System.Drawing.Point(5, 9);
             this.lb_title.Name = "lb_title";
             this.lb_title.Size = new System.Drawing.Size(212, 37);
@@ -68,6 +70,8 @@
             // lb_zmessage_list_usb
             // 
             this.lb_zmessage_list_usb.AutoSize = true;
+            this.lb_zmessage_list_usb.BackColor = System.Drawing.Color.Transparent;
+            this.lb_zmessage_list_usb.ForeColor = System.Drawing.Color.White;
             this.lb_zmessage_list_usb.Location = new System.Drawing.Point(12, 68);
             this.lb_zmessage_list_usb.Name = "lb_zmessage_list_usb";
             this.lb_zmessage_list_usb.Size = new System.Drawing.Size(124, 15);
@@ -190,8 +194,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PaleGreen;
-            this.ClientSize = new System.Drawing.Size(1920, 1061);
+            this.BackColor = System.Drawing.Color.DarkCyan;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1372, 749);
             this.Controls.Add(this.bt_copyright);
             this.Controls.Add(this.bt_open_all);
             this.Controls.Add(this.bt_browse_public);

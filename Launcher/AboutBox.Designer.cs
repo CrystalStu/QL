@@ -117,7 +117,7 @@
             this.labelVersion.Name = "labelVersion";
             this.labelVersion.Size = new System.Drawing.Size(343, 20);
             this.labelVersion.TabIndex = 0;
-            this.labelVersion.Text = "My website: http://cstu.gq:6660, E-mail: turuixuan@qq.com";
+            this.labelVersion.Text = "Website: http://cstu.gq, E-mail: turuixuan@qq.com";
             this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // labelProductName
