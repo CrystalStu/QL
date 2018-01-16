@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lb_title = new System.Windows.Forms.Label();
             this.list_usb = new System.Windows.Forms.ListBox();
             this.lb_zmessage_list_usb = new System.Windows.Forms.Label();
             this.bt_usb_eject = new System.Windows.Forms.Button();
             this.bt_usb_browse = new System.Windows.Forms.Button();
-            this.bt_exit = new System.Windows.Forms.Button();
-            this.tb_exit_pass = new System.Windows.Forms.TextBox();
-            this.bt_exit_verify = new System.Windows.Forms.Button();
             this.bt_usb_clear = new System.Windows.Forms.Button();
             this.bt_browse_public = new System.Windows.Forms.Button();
             this.bt_open_all = new System.Windows.Forms.Button();
             this.bt_copyright = new System.Windows.Forms.Button();
+            this.timer_Desktop = new System.Windows.Forms.Timer(this.components);
+            this.lb_remain_notice = new System.Windows.Forms.Label();
+            this.lb_remain = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lb_title
@@ -106,37 +107,6 @@
             this.bt_usb_browse.UseVisualStyleBackColor = false;
             this.bt_usb_browse.Click += new System.EventHandler(this.bt_usb_browse_Click);
             // 
-            // bt_exit
-            // 
-            this.bt_exit.Location = new System.Drawing.Point(12, 1026);
-            this.bt_exit.Name = "bt_exit";
-            this.bt_exit.Size = new System.Drawing.Size(75, 23);
-            this.bt_exit.TabIndex = 5;
-            this.bt_exit.Text = "Exit";
-            this.bt_exit.UseVisualStyleBackColor = true;
-            this.bt_exit.Visible = false;
-            this.bt_exit.Click += new System.EventHandler(this.bt_exit_Click);
-            // 
-            // tb_exit_pass
-            // 
-            this.tb_exit_pass.Location = new System.Drawing.Point(93, 1026);
-            this.tb_exit_pass.Name = "tb_exit_pass";
-            this.tb_exit_pass.PasswordChar = '*';
-            this.tb_exit_pass.Size = new System.Drawing.Size(131, 23);
-            this.tb_exit_pass.TabIndex = 6;
-            this.tb_exit_pass.Visible = false;
-            // 
-            // bt_exit_verify
-            // 
-            this.bt_exit_verify.Location = new System.Drawing.Point(230, 1025);
-            this.bt_exit_verify.Name = "bt_exit_verify";
-            this.bt_exit_verify.Size = new System.Drawing.Size(75, 23);
-            this.bt_exit_verify.TabIndex = 7;
-            this.bt_exit_verify.Text = "Verify";
-            this.bt_exit_verify.UseVisualStyleBackColor = true;
-            this.bt_exit_verify.Visible = false;
-            this.bt_exit_verify.Click += new System.EventHandler(this.bt_exit_verify_Click);
-            // 
             // bt_usb_clear
             // 
             this.bt_usb_clear.BackColor = System.Drawing.Color.AntiqueWhite;
@@ -190,6 +160,34 @@
             this.bt_copyright.UseVisualStyleBackColor = false;
             this.bt_copyright.Click += new System.EventHandler(this.bt_copyright_Click);
             // 
+            // timer_Desktop
+            // 
+            this.timer_Desktop.Enabled = true;
+            this.timer_Desktop.Interval = 1000;
+            this.timer_Desktop.Tick += new System.EventHandler(this.timer_Desktop_Tick);
+            // 
+            // lb_remain_notice
+            // 
+            this.lb_remain_notice.AutoSize = true;
+            this.lb_remain_notice.BackColor = System.Drawing.Color.Transparent;
+            this.lb_remain_notice.ForeColor = System.Drawing.Color.White;
+            this.lb_remain_notice.Location = new System.Drawing.Point(621, 68);
+            this.lb_remain_notice.Name = "lb_remain_notice";
+            this.lb_remain_notice.Size = new System.Drawing.Size(98, 15);
+            this.lb_remain_notice.TabIndex = 12;
+            this.lb_remain_notice.Text = "距离中考还有：";
+            // 
+            // lb_remain
+            // 
+            this.lb_remain.AutoSize = true;
+            this.lb_remain.BackColor = System.Drawing.Color.Transparent;
+            this.lb_remain.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb_remain.ForeColor = System.Drawing.Color.White;
+            this.lb_remain.Location = new System.Drawing.Point(615, 86);
+            this.lb_remain.Name = "lb_remain";
+            this.lb_remain.Size = new System.Drawing.Size(0, 50);
+            this.lb_remain.TabIndex = 13;
+            // 
             // Launcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -197,13 +195,12 @@
             this.BackColor = System.Drawing.Color.DarkCyan;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1372, 749);
+            this.Controls.Add(this.lb_remain);
+            this.Controls.Add(this.lb_remain_notice);
             this.Controls.Add(this.bt_copyright);
             this.Controls.Add(this.bt_open_all);
             this.Controls.Add(this.bt_browse_public);
             this.Controls.Add(this.bt_usb_clear);
-            this.Controls.Add(this.bt_exit_verify);
-            this.Controls.Add(this.tb_exit_pass);
-            this.Controls.Add(this.bt_exit);
             this.Controls.Add(this.bt_usb_browse);
             this.Controls.Add(this.bt_usb_eject);
             this.Controls.Add(this.lb_zmessage_list_usb);
@@ -232,13 +229,13 @@
         private System.Windows.Forms.Label lb_zmessage_list_usb;
         private System.Windows.Forms.Button bt_usb_eject;
         private System.Windows.Forms.Button bt_usb_browse;
-        private System.Windows.Forms.Button bt_exit;
-        private System.Windows.Forms.TextBox tb_exit_pass;
-        private System.Windows.Forms.Button bt_exit_verify;
         private System.Windows.Forms.Button bt_usb_clear;
         private System.Windows.Forms.Button bt_browse_public;
         private System.Windows.Forms.Button bt_open_all;
         private System.Windows.Forms.Button bt_copyright;
+        private System.Windows.Forms.Timer timer_Desktop;
+        private System.Windows.Forms.Label lb_remain_notice;
+        private System.Windows.Forms.Label lb_remain;
     }
 }
 

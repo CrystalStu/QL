@@ -11,7 +11,7 @@ namespace Launcher
 {
     public partial class Launcher : Form
     {
-        // string ExitPass = "ExitSystem";
+        DateTime destDate = new DateTime(2018, 6, 15);
 
         public const int WM_DEVICECHANGE = 0x219;
         public const int DBT_DEVICEARRIVAL = 0x8000;    //如果m.Msg的值为0x8000那么表示有U盘插入
@@ -38,30 +38,37 @@ namespace Launcher
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto, SetLastError = true)]
         public static extern int SystemParametersInfo(int uAction, int uParam, StringBuilder lpvParam, int fuWinIni);
         private const int SPI_GETDESKWALLPAPER = 0x0073;
+        private Image cachedDesktop;
         #endregion
-        private string GetDesktop()
+        private void SetDesktop()
         {
-            //定义存储缓冲区大小
-            StringBuilder s = new StringBuilder(300);
-            //获取Window 桌面背景图片地址，使用缓冲区
-            SystemParametersInfo(SPI_GETDESKWALLPAPER, 300, s, 0);
-            //缓冲区中字符进行转换
-            string wallpaper_path = s.ToString(); //系统桌面背景图片路径
-            return wallpaper_path;
+            StringBuilder desktopPath = new StringBuilder(300);
+            SystemParametersInfo(SPI_GETDESKWALLPAPER, 300, desktopPath, 0);
+            Image desktop = Image.FromFile(desktopPath.ToString());
+            if (cachedDesktop == null)
+            {
+                cachedDesktop = desktop;
+                BackgroundImage = desktop;
+            }
         }
 
         private void Launcher_Load(object sender, EventArgs e)
         {
-            this.BackgroundImage = Image.FromFile(GetDesktop());
-            //pb_back.ImageLocation = GetDesktop();
+            SetDesktop();
+            setRemain(ref destDate);
             ProgramUpd.Execute();
             List_USB();
-            
         }
 
-        public Message mm;
+        private void setRemain(ref DateTime timeRemain)
+        {
+            TimeSpan ts = timeRemain - DateTime.Now;
+            lb_remain.Text = ts.Days + "天 " + ts.Hours + "小时 " + ts.Seconds + "秒";
+        }
 
-        protected override void WndProc(ref Message m)
+        // public Message mm;
+
+        protected override void WndProc(ref System.Windows.Forms.Message m)
         {
             try
             {
@@ -322,6 +329,12 @@ namespace Launcher
         private void bt_copyright_Click(object sender, EventArgs e)
         {
             new AboutBox().ShowDialog();
+        }
+
+        private void timer_Desktop_Tick(object sender, EventArgs e)
+        {
+            SetDesktop();
+            setRemain(ref destDate);
         }
     }
 }
