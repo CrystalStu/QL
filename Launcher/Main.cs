@@ -45,11 +45,12 @@ namespace Launcher
             StringBuilder desktopPath = new StringBuilder(300);
             SystemParametersInfo(SPI_GETDESKWALLPAPER, 300, desktopPath, 0);
             Image desktop = Image.FromFile(desktopPath.ToString());
-            if (cachedDesktop == null)
+            /* if (cachedDesktop == null)
             {
                 cachedDesktop = desktop;
                 BackgroundImage = desktop;
-            }
+            } */
+            BackgroundImage = desktop;
         }
 
         private void Launcher_Load(object sender, EventArgs e)
@@ -63,7 +64,7 @@ namespace Launcher
         private void setRemain(ref DateTime timeRemain)
         {
             TimeSpan ts = timeRemain - DateTime.Now;
-            lb_remain.Text = ts.Days + "天 " + ts.Hours + "小时 " + ts.Seconds + "秒";
+            lb_remain.Text = ts.Days + "天 " + ts.Hours + "小时 " + ts.Minutes + "分钟 " + ts.Seconds + "秒";
         }
 
         // public Message mm;
@@ -333,8 +334,13 @@ namespace Launcher
 
         private void timer_Desktop_Tick(object sender, EventArgs e)
         {
-            SetDesktop();
+            // SetDesktop();
             setRemain(ref destDate);
+        }
+
+        private void Launcher_Activated(object sender, EventArgs e)
+        {
+            SetDesktop();
         }
     }
 }
