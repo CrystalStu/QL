@@ -11,7 +11,7 @@ namespace Launcher
 {
     public partial class Launcher : Form
     {
-        DateTime destDate = new DateTime(2018, 6, 15);
+        DateTime destDate = new DateTime(2018, 6, 19);
 
         public const int WM_DEVICECHANGE = 0x219;
         public const int DBT_DEVICEARRIVAL = 0x8000;    //如果m.Msg的值为0x8000那么表示有U盘插入
